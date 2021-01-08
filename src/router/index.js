@@ -8,6 +8,8 @@ const routes = [{
         path: "/",
         name: "Featured",
         component: Featured,
+        meta: { isShowNav: true },
+
     },
 
     {
@@ -15,6 +17,8 @@ const routes = [{
 
         component: () =>
             import ( /* webpackChunkName: "about" */ "../views/ThreeFold.vue"),
+        meta: { isShowNav: true },
+
     },
     {
         path: "/VipQuicklyRob",
@@ -22,6 +26,8 @@ const routes = [{
 
         component: () =>
             import ( /* webpackChunkName: "about" */ "../views/VipQuicklyRob.vue"),
+        meta: { isShowNav: true },
+
     },
     {
         path: "/VipAoLai",
@@ -29,6 +35,8 @@ const routes = [{
 
         component: () =>
             import ( /* webpackChunkName: "about" */ "../views/VipAoLai.vue"),
+        meta: { isShowNav: true },
+
     },
     {
         path: "/Clearance",
@@ -36,6 +44,15 @@ const routes = [{
 
         component: () =>
             import ( /* webpackChunkName: "about" */ "../views/Clearance.vue"),
+        meta: { isShowNav: true },
+
+    },
+    {
+        path: "/Shoper",
+        name: "Shoper",
+
+        component: () =>
+            import ( /* webpackChunkName: "about" */ "../views/Shoper.vue"),
     },
 ];
 

@@ -1,11 +1,14 @@
 <template>
-  <div class="classitem">
-    <div class="glass"></div>
-    <div class="logo" :style="{ backgroundImage: `url(${item.logoURL})` }"></div>
-    <div class="text">
-{{item.word}}
-    </div>
-  </div>
+    <div class="classitem">
+      <div class="glass"></div>
+      <div
+        class="logo"
+        :style="{ backgroundImage: `url(${item.logoURL})` }"
+      ></div>
+      <div class="text">
+        {{ item.word }}
+      </div>
+ </div>
 </template>
 
 <script>
@@ -15,6 +18,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
+
 .classitem {
   width: 18vw;
   max-width: 100px;

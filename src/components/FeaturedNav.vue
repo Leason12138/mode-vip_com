@@ -1,11 +1,13 @@
 <template>
-  <div class="FeaturedNav">
+  <!-- <div > -->
+  <router-link class="FeaturedNav" to="Shoper">
     <img class="mid" :src="item.midURL" alt="" />
     <div class="bottom">
       <img class="logo" :src="item.logo" alt="" />
       <span class="word">{{ item.word }}</span>
     </div>
-  </div>
+  </router-link>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -45,7 +47,7 @@ export default {
       height: 25px;
       color: #f03867;
       position: absolute;
-    font-size: 14px;
+      font-size: 14px;
       bottom: 0;
       display: block;
       overflow: hidden;

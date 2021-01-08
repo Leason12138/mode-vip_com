@@ -12,7 +12,11 @@
     </div>
     <div class="navbar"></div>
     <div class="classes">
-      <ClassItem v-for="(item, index) in classesData" :item="item" :key="index">
+      <ClassItem
+        v-for="(item, index) in classesData"
+        :item="item"
+        :key="index + 10"
+      >
       </ClassItem>
     </div>
     <div class="goodthingoutbox">
@@ -21,16 +25,34 @@
         <div class="goodthing-box"></div>
       </div>
     </div>
+    <div class="special-sell">
+      <div class="text">今日特卖 · 10点上新</div>
+      <ShowSectionItem
+        v-for="(item, index) in showSectionList"
+        :item="item"
+        :key="index + 20"
+      >
+      </ShowSectionItem>
+
+      <LazyIntoOfFeature
+        v-for="item in ajaxgetarr"
+        :item="item"
+        :key="item.slice(667)"
+      >
+      </LazyIntoOfFeature>
+    </div>
   </div>
 </template>
 
 <script>
 import FeaturedNav from "../components/FeaturedNav.vue";
 import ClassItem from "../components/ClassItem.vue";
+import ShowSectionItem from "../components/ShowSectionItem";
+import LazyIntoOfFeature from "../components/LazyIntoOfFeature";
 // @ is an alias to /src
 
 export default {
-  components: { FeaturedNav, ClassItem },
+  components: { FeaturedNav, ClassItem, ShowSectionItem, LazyIntoOfFeature },
   name: "Featured",
   data: function () {
     return {
@@ -125,18 +147,54 @@ export default {
           word: "清仓",
         },
       ],
-      showSectionList: [],
+      showSectionList: [
+        {
+          data: {
+            brand: {
+              image:
+                "https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2020/12/30/199/ias_b6827191e0fbd9d32567d22f44b4a2b7_1135x545_85.jpg",
+              title: "耐克Nike运动户外专场",
+              discount: "1.8折起",
+              brand_id:'0'
+            },
+          },
+        },
+        {
+          data: {
+            brand: {
+              image:
+               'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2020/09/04/113/ias_b4a06a643a57d9b78727c7a901705db3_1135x545_85.jpg',
+              title: "苹果Apple数码电子专场",
+              discount: "3.1折起",
+              brand_id:'1'
+            },
+          },
+        },
+        {
+          data: {
+            brand: {
+              image:
+               'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2020/09/04/133/ias_f4eaec9fc9133cfae152c694e4b57983_1135x545_85.jpg',
+              title: "欧莱雅Loreal美妆个护专场",
+              discount: "4.6折起",
+              brand_id:'2'
+            },
+          },
+        },
+      ],
+      ajaxgetarr: [
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjMwIiwiYnJhbmRfcmVmZXJfaW5kZXgiOiI1IiwidG9waWNfZ3JvdXAiOiIwIiwid2VpeGluQnJhbmRUaHJlZSI6IjAifQ%3D%3D&_=1609934017",
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjMwIiwiYnJhbmRfcmVmZXJfaW5kZXgiOiI1IiwidG9waWNfZ3JvdXAiOiIwIiwid2VpeGluQnJhbmRUaHJlZSI6IjAifQ%3D%3D&_=1609934069",
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjYwIiwiYnJhbmRfcmVmZXJfaW5kZXgiOiI1IiwidG9waWNfZ3JvdXAiOiIwIiwid2VpeGluQnJhbmRUaHJlZSI6IjAifQ%3D%3D&_=1609934079",
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjkwIiwiYnJhbmRfcmVmZXJfaW5kZXgiOiI1IiwidG9waWNfZ3JvdXAiOiIwIiwid2VpeGluQnJhbmRUaHJlZSI6IjAifQ%3D%3D&_=1609934088",
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjEyMCIsImJyYW5kX3JlZmVyX2luZGV4IjoiNSIsInRvcGljX2dyb3VwIjoiMCIsIndlaXhpbkJyYW5kVGhyZWUiOiIwIn0%3D&_=1609934099",
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjE1MCIsImJyYW5kX3JlZmVyX2luZGV4IjoiNSIsInRvcGljX2dyb3VwIjoiMCIsIndlaXhpbkJyYW5kVGhyZWUiOiIwIn0%3D&_=1609934109",
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjE4MCIsImJyYW5kX3JlZmVyX2luZGV4IjoiNSIsInRvcGljX2dyb3VwIjoiMCIsIndlaXhpbkJyYW5kVGhyZWUiOiIwIn0%3D&_=1609934118",
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjIxMCIsImJyYW5kX3JlZmVyX2luZGV4IjoiNSIsInRvcGljX2dyb3VwIjoiMCIsIndlaXhpbkJyYW5kVGhyZWUiOiIwIn0%3D&_=1609934127",
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjI0MCIsImJyYW5kX3JlZmVyX2luZGV4IjoiNSIsInRvcGljX2dyb3VwIjoiMCIsIndlaXhpbkJyYW5kVGhyZWUiOiIwIn0%3D&_=1609934137",
+        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjI3MCIsImJyYW5kX3JlZmVyX2luZGV4IjoiNSIsInRvcGljX2dyb3VwIjoiMCIsIndlaXhpbkJyYW5kVGhyZWUiOiIwIn0%3D&_=1609934147",
+      ],
     };
-  },
-  created() {
-    this.axios
-      .get(
-        "https://mapi.vip.com/vips-mobile/rest/layout/h5/channel/data?app_name=shop_wap&app_version=4.0&api_key=8cec5243ade04ed3a02c5972bcda0d3f&mobile_platform=2&source_app=yd_wap&warehouse=VIP_NH&fdc_area_id=104104101&province_id=104104&mars_cid=1598252215221_c83cf8a9ddb907895d6f954fe7385ea9&mobile_channel=mobiles-%7C%7C&standby_id=nature&wap_consumer=A1&lightart_version=1.3.0&width=640&height=460&net=wifi&client=wap&changeResolution=2&menu_code=bigbshouye&channel_name=%E7%B2%BE%E9%80%89&load_more_token=eyJjaGFubmVsX2lkIjoiMTAyNCIsInRzaWZ0IjoiMCIsImJyYW5kX29mZnNldCI6IjAiLCJicmFuZF9yZWZlcl9pbmRleCI6IjUiLCJ0b3BpY19ncm91cCI6IjAiLCJ3ZWl4aW5CcmFuZFRocmVlIjoiMCJ9&_=1609923046"
-      )
-      .then((res) => {
-        this.showSectionList = res.data.data.data.floor_list;
-        console.log(this.showSectionList[0].data.brand);
-      });
   },
 };
 </script>
@@ -185,8 +243,10 @@ export default {
 
 .goodthingoutbox {
   width: 100vw;
+  max-width: 540px;
   height: 80vw;
-  background: linear-gradient(to bottom, #fff, #e0e0e0);
+  max-height: 432px;
+  background: linear-gradient(to bottom, #fff, #eee);
   .goodthing {
     width: 96vw;
     height: 80vw;
@@ -211,7 +271,38 @@ export default {
         background-image: url("../assets/goodthing.jpg");
         background-position: center center;
         background-size: contain;
+        background-repeat: no-repeat;
       }
+    }
+  }
+}
+.special-sell {
+  background-color: #eee;
+  .text {
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      background-color: #000;
+      width: 26%;
+      height: 0.1px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    &::after {
+      content: "";
+      display: block;
+      background-color: #000;
+      width: 26%;
+      height: 0.1px;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
     }
   }
 }

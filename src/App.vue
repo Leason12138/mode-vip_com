@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="top">
+    <div v-show="$route.meta.isShowNav" class="top">
       <div class="seach">
         <div class="phome"></div>
         <div class="fakeipt">{{ sugitem.showWord }}</div>
@@ -34,9 +34,12 @@
         >
       </div>
     </div>
-    <div class="mainview">
-    <router-view></router-view>
-
+    <div
+      :class="{
+        mainview: $route.meta.isShowNav,
+      }"
+    >
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -50,6 +53,12 @@ export default {
       sugitem: "",
       sugidx: 0,
     };
+  },
+  watch: {
+    $route: function () {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    },
   },
   name: "app",
   created() {
@@ -127,7 +136,7 @@ export default {
       display: flex;
       justify-content: space-around;
       border-bottom: 1px solid #eeeeee;
-      padding:10px 0 0 0;
+      padding: 10px 0 0 0;
       margin: 0;
       .mytab {
         padding: 0;
@@ -140,8 +149,8 @@ export default {
       }
     }
   }
-  .mainview{
-    margin-top:92px;
+  .mainview {
+    margin-top: 92px;
   }
 }
 </style>
